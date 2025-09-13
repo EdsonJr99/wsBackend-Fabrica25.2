@@ -1,7 +1,9 @@
 from django.urls import path
 from .views import HelloView, LivroListView, LivroCreateView, LivroUpdateView, LivroDeleteView, AutorListView, AutorCreateView, AutorUpdateView, AutorDeleteView, UsuarioListView, UsuarioCreateView, UsuarioUpdateView, UsuarioDeleteView
+from . import views
 
 urlpatterns = [path("", HelloView.as_view(), name="index"),
+               path("buscar/", views.buscar_livros, name="buscar_livros"),
                path("listar", LivroListView.as_view(), name="listar_livros"),
                path("adicionar", LivroCreateView.as_view(), name="adicionar_livro"),
                path("atualizar/<int:pk>", LivroUpdateView.as_view(), name="atualizar_livro"),

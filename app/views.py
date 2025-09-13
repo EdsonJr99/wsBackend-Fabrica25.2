@@ -5,12 +5,27 @@ from .forms import LivroForm, AutorForm, UsuarioForm
 from django.urls import reverse_lazy
 from django.views import View
 from django.http import HttpResponse
+from .services import buscar_livros_google
+import requests
 
 
 class HelloView(View):
     def get(self, request):
         return HttpResponse('lesgo')
     
+
+
+def buscar_livros(request):
+    query = request.GET.get("q")
+    resultados = []
+
+    if query:
+        resultados = buscar_livros_google(query)
+
+    return render(request, "buscarlivro.html", {
+        "resultados": resultados,
+        "query": query
+    })
 
 class LivroListView(ListView):
     model = Livro
@@ -35,9 +50,6 @@ class LivroDeleteView(DeleteView):
     template_name = "deletarlivro.html"
     context_object_name = ("livro")
     success_url = reverse_lazy("listar_livros")
-
-
-
 
 
 class AutorListView(ListView):
