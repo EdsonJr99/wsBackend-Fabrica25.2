@@ -8,8 +8,9 @@
 <body>
     <form method = "post">
         {% csrf_token %}
-        <p>Tem certeza que deseja deletar {{ livro.nome }}</p>
+        <p>Tem certeza que deseja deletar <b>{{ livro.titulo }}</b>?</p>
         <button type="submit">Sim</button>
+        <a href="/listar" class="btn-voltar">Voltar</a>
     </form>
 </body>
 </html>

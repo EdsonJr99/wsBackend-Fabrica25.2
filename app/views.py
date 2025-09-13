@@ -10,11 +10,12 @@ from django.http import HttpResponse
 class HelloView(View):
     def get(self, request):
         return HttpResponse('lesgo')
+    
 
 class LivroListView(ListView):
     model = Livro
     template_name = "list.html"
-    context_object_name = "livro"
+    context_object_name = "livros"
 
 class LivroCreateView(CreateView):
     model = Livro
@@ -34,6 +35,8 @@ class LivroDeleteView(DeleteView):
     template_name = "deletarlivro.html"
     context_object_name = ("livro")
     success_url = reverse_lazy("listar_livros")
+
+
 
 
 
