@@ -5,7 +5,7 @@
     <title>Buscar Livros</title>
 </head>
 <body>
-    <h1>Buscar Livros (Google Books)</h1>
+    <h1>Buscar Livros</h1>
 
     <form method="GET" action="{% url 'buscar_livros' %}">
         <input type="text" name="q" value="{{ query|default:'' }}" placeholder="Digite o título">
@@ -17,10 +17,10 @@
         <ul>
         {% for livro in resultados %}
             <li>
-                <strong>{{ livro.volumeInfo.title|default:"(Sem título)" }}</strong><br>
+                <b>{{ livro.volumeInfo.title|default:"(Sem título)" }}</b><br>
                 Autor(es): {{ livro.volumeInfo.authors|join:", "|default:"Desconhecido" }}<br>
                 {% if livro.volumeInfo.imageLinks %}
-                    <img src="{{ livro.volumeInfo.imageLinks.thumbnail }}" alt="Capa">
+                    <img src="{{ livro.volumeInfo.imageLinks.thumbnail }}">
                 {% endif %}
                 <hr>
             </li>

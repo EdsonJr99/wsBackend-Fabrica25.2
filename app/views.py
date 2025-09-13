@@ -13,8 +13,6 @@ class HelloView(View):
     def get(self, request):
         return HttpResponse('lesgo')
     
-
-
 def buscar_livros(request):
     query = request.GET.get("q")
     resultados = []
