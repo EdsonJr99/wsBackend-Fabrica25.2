@@ -11,10 +11,12 @@
     <ul>
         <li>
             {{ livro.nome }}
+            {{ livro.editora }}
+            {{ livro.publicado }}
         </li>
     </ul>
-    <a href="{% url 'atualizar_livro' livro.id %}">Atualizar Livro</a>
-    <a href="{% url 'deletar_livro' livro.id %}">Deletar Livro</a>
+        <a href="{% url 'atualizar_livro' livro.id %}">Atualizar Livro</a>
+        <a href="{% url 'deletar_livro' livro.id %}">Deletar Livro</a>
     {% endfor %}
     <a href="{% url 'adicionar_livro' %}">Adicionar Livro</a>
 </body>

@@ -5,6 +5,9 @@ class Livro(models.Model):
     editora = models.CharField(max_length=100)
     publicado = models.DateField()
 
+    def __str__(self):
+        return self.nome
+
 class Autor(models.Model):
     nome = models.CharField(max_length=100)
     bio = models.CharField(max_length=100)
