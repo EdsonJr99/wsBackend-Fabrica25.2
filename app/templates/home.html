@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>bem vindo a minha pagina principal</h1>
+    <ul>
+        <li><a href="{% url 'listar_livros' %}">Lista de Livros</a></li>
+        <li><a href="{% url 'listar_autores' %}">Lista de Autores</a></li>
+        <li><a href="{% url 'listar_usuarios' %}">Lista de Usuarios</a></li>
+        <li><a href="{% url 'buscar_livros' %}">API de busca do google</a></li>
+    </ul>
+
+</body>
+</html>

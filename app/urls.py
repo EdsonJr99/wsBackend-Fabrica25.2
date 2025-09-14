@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import HelloView, LivroListView, LivroCreateView, LivroUpdateView, LivroDeleteView, AutorListView, AutorCreateView, AutorUpdateView, AutorDeleteView, UsuarioListView, UsuarioCreateView, UsuarioUpdateView, UsuarioDeleteView
+from .views import LivroListView, LivroCreateView, LivroUpdateView, LivroDeleteView, AutorListView, AutorCreateView, AutorUpdateView, AutorDeleteView, UsuarioListView, UsuarioCreateView, UsuarioUpdateView, UsuarioDeleteView
 from . import views
 from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
 
-urlpatterns = [path("", HelloView.as_view(), name="index"),
+urlpatterns = [path("", views.home, name="home"),
                path('api/token', TokenObtainPairView.as_view(), name="token_obtain_pair"),
                path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
                path("buscar/", views.buscar_livros, name="buscar_livros"),

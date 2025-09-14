@@ -9,9 +9,9 @@ from .services import buscar_livros_google
 import requests
 
 
-class HelloView(View):
-    def get(self, request):
-        return HttpResponse('lesgo')
+
+def home(request):
+    return render(request, 'home.html')
     
 def buscar_livros(request):
     query = request.GET.get("q")
