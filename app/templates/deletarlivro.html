@@ -1,16 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Deletar Livro</title>
 </head>
 <body>
-    <form method = "post">
-        {% csrf_token %}
-        <p>Tem certeza que deseja deletar <b>{{ livro.titulo }}</b>?</p>
-        <button type="submit">Sim</button>
-        <a href="/listar" class="btn-voltar">Voltar</a>
-    </form>
+
+    <header>
+        <h1 align="center">🗑️ Deletar Livro</h1>
+        <hr>
+    </header>
+
+    <main>
+        <form method="post" align="center">
+            {% csrf_token %}
+            <p>Tem certeza que deseja deletar o livro <b>{{ livro.titulo }}</b>?</p>
+            
+            <button type="submit">✅ Sim, deletar</button>
+            <a href="{% url 'listar_livros' %}">❌ Cancelar</a>
+        </form>
+    </main>
+
+    <footer>
+        <hr>
+        <p align="center">Gerenciador de Livros</p>
+    </footer>
+
 </body>
 </html>

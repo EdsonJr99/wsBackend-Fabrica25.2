@@ -1,23 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Autores</title>
 </head>
 <body>
-    <h1>Autores Cadastrados</h1>
-    {% for autor in autores %}
-    <ul>
-        <li>
-            {{ autor.nome_autor }}
-            {{ autor.bio }}
-        </li>
-    </ul>
-        <a href="{% url 'atualizar_autor' autor.id %}">Atualizar Autor</a>
-        <a href="{% url 'deletar_autor' autor.id %}">Deletar Autor</a>
-    {% endfor %}
-    <a href="{% url 'adicionar_autor' %}">Adicionar Autor</a>
-    <a href="{% url 'home' %}">Voltar</a>
+
+    <header>
+        <h1 align="center">✍️ Autores Cadastrados</h1>
+        <hr>
+    </header>
+
+    <main>
+        {% if autores %}
+        <table border="1" align="center" cellpadding="8" cellspacing="0">
+            <tr>
+                <th>Nome</th>
+                <th>Biografia</th>
+                <th>Ações</th>
+            </tr>
+            {% for autor in autores %}
+            <tr>
+                <td>{{ autor.nome_autor }}</td>
+                <td>{{ autor.bio }}</td>
+                <td align="center">
+                    <a href="{% url 'atualizar_autor' autor.id %}">✏️ Atualizar</a> |
+                    <a href="{% url 'deletar_autor' autor.id %}">🗑️ Deletar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+            <p align="center">⚠️ Nenhum autor cadastrado ainda.</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        <hr>
+        <p align="center">
+            <a href="{% url 'adicionar_autor' %}">➕ Adicionar Autor</a> |
+            <a href="{% url 'home' %}">🏠 Voltar</a>
+        </p>
+    </footer>
+
 </body>
 </html>

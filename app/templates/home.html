@@ -1,18 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Gerenciador de Livros</title>
 </head>
 <body>
-    <h1>Gerenciador de Livros</h1>
-    <ul>
-        <li><a href="{% url 'listar_livros' %}">Lista de Livros</a></li>
-        <li><a href="{% url 'listar_autores' %}">Lista de Autores</a></li>
-        <li><a href="{% url 'listar_usuarios' %}">Lista de Usuarios</a></li>
-        <li><a href="{% url 'buscar_livros' %}">API de busca do google</a></li>
-    </ul>
+
+    <header>
+        <h1 align="center">📚 Gerenciador de Livros</h1>
+        <hr>
+    </header>
+
+    <main>
+        <section>
+            <h2 align="center">Menu Principal</h2>
+            <table border="1" align="center" cellpadding="12" cellspacing="0">
+                <tr>
+                    <td align="center"><a href="{% url 'listar_livros' %}">📖 Lista de Livros</a></td>
+                </tr>
+                <tr>
+                    <td align="center"><a href="{% url 'listar_autores' %}">✍️ Lista de Autores</a></td>
+                </tr>
+                <tr>
+                    <td align="center"><a href="{% url 'listar_usuarios' %}">👥 Lista de Usuários</a></td>
+                </tr>
+                <tr>
+                    <td align="center"><a href="{% url 'buscar_livros' %}">🔎 API de Busca do Google</a></td>
+                </tr>
+            </table>
+        </section>
+    </main>
 
 </body>
 </html>

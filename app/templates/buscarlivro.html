@@ -5,28 +5,46 @@
     <title>Buscar Livros</title>
 </head>
 <body>
-    <h1>Buscar Livros</h1>
 
-    <form method="GET" action="{% url 'buscar_livros' %}">
-        <input type="text" name="q" value="{{ query|default:'' }}" placeholder="Digite o título">
-        <button type="submit">Buscar</button>
-    </form>
+    <header>
+        <h1 align="center">🔎 Buscar Livros</h1>
+        <hr>
+    </header>
 
-    {% if resultados %}
-        <h2>Resultados:</h2>
-        <ul>
-        {% for livro in resultados %}
-            <li>
-                <b>{{ livro.volumeInfo.title|default:"(Sem título)" }}</b><br>
-                Autor(es): {{ livro.volumeInfo.authors|join:", "|default:"Desconhecido" }}<br>
-                {% if livro.volumeInfo.imageLinks %}
-                    <img src="{{ livro.volumeInfo.imageLinks.thumbnail }}">
-                {% endif %}
-                <hr>
-            </li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-    <a href="{% url 'home' %}">Voltar</a>
+    <main>
+        <form method="GET" action="{% url 'buscar_livros' %}" align="center">
+            <input type="text" name="q" value="{{ query|default:'' }}" placeholder="Digite o título">
+            <button type="submit">🔍 Buscar</button>
+        </form>
+
+        {% if resultados %}
+            <h2 align="center">📚 Resultados</h2>
+            <hr>
+            <ul>
+            {% for livro in resultados %}
+                <li>
+                    <p>
+                        <b>{{ livro.volumeInfo.title|default:"(Sem título)" }}</b><br>
+                        Autor(es): {{ livro.volumeInfo.authors|join:", "|default:"Desconhecido" }}
+                    </p>
+                    {% if livro.volumeInfo.imageLinks %}
+                        <img src="{{ livro.volumeInfo.imageLinks.thumbnail }}" alt="Capa do livro">
+                    {% endif %}
+                    <hr>
+                </li>
+            {% endfor %}
+            </ul>
+        {% elif query %}
+            <p align="center">⚠️ Nenhum resultado encontrado para "<b>{{ query }}</b>".</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        <hr>
+        <p align="center">
+            <a href="{% url 'home' %}">🏠 Voltar</a>
+        </p>
+    </footer>
+
 </body>
 </html>

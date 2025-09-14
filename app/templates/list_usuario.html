@@ -1,23 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Usuarios</title>
+    <title>Lista de Usuários</title>
 </head>
 <body>
-    <h1>Usuarios Cadastrados</h1>
-    {% for usuario in usuarios %}
-    <ul>
-        <li>
-            {{ usuario.nome_usuario }}
-            {{ usuario.idade }}
-        </li>
-    </ul>
-        <a href="{% url 'atualizar_usuario' usuario.id %}">Atualizar Usuario</a>
-        <a href="{% url 'deletar_usuario' usuario.id %}">Deletar Usuario</a>
-    {% endfor %}
-    <a href="{% url 'adicionar_usuario' %}">Adicionar Usuario</a>
-    <a href="{% url 'home' %}">Voltar</a>
+
+    <header>
+        <h1 align="center">👥 Usuários Cadastrados</h1>
+        <hr>
+    </header>
+
+    <main>
+        {% if usuarios %}
+        <table border="1" align="center" cellpadding="8" cellspacing="0">
+            <tr>
+                <th>Nome de Usuário</th>
+                <th>Idade</th>
+                <th>Ações</th>
+            </tr>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.nome_usuario }}</td>
+                <td>{{ usuario.idade }}</td>
+                <td align="center">
+                    <a href="{% url 'atualizar_usuario' usuario.id %}">✏️ Atualizar</a> |
+                    <a href="{% url 'deletar_usuario' usuario.id %}">🗑️ Deletar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+            <p align="center">⚠️ Nenhum usuário cadastrado ainda.</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        <hr>
+        <p align="center">
+            <a href="{% url 'adicionar_usuario' %}">➕ Adicionar Usuário</a> |
+            <a href="{% url 'home' %}">🏠 Voltar</a>
+        </p>
+    </footer>
+
 </body>
 </html>
