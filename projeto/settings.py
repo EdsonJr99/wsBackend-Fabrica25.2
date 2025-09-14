@@ -85,12 +85,12 @@ WSGI_APPLICATION = 'projeto.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('meuBanco', 'mydb'),
-        'USER': os.environ.get('edson', 'myuser'),
-        'PASSWORD': os.environ.get('15975325jr.', 'mypassword'),
-        'HOST': os.environ.get('localhost', 'db'),
-        'PORT': os.environ.get('3306', '3306'),
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.environ.get("DB_NAME", "mydb"),
+        "USER": os.environ.get("DB_USER", "myuser"),
+        "PASSWORD": os.environ.get("DB_PASSWORD", "mypassword"),
+        "HOST": "127.0.0.1",
+        "PORT": 3306,
     }
 }
 
