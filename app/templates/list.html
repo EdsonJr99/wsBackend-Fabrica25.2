@@ -1,23 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Livros</title>
 </head>
 <body>
-    <h1>Livros cadastrados</h1>
-    {% for livro in livros %}
-    <ul>
-        <li>
-            {{ livro.titulo }}
-            {{ livro.editora }}
-            {{ livro.publicado }}
-        </li>
-    </ul>
-        <a href="{% url 'atualizar_livro' livro.id %}">Atualizar Livro</a>
-        <a href="{% url 'deletar_livro' livro.id %}">Deletar Livro</a>
-    {% endfor %}
-    <a href="{% url 'adicionar_livro' %}">Adicionar Livro</a>
+
+    <header>
+        <h1 align="center">📚 Livros Cadastrados</h1>
+        <hr>
+    </header>
+
+    <main>
+        {% if livros %}
+        <table border="1" align="center" cellpadding="8" cellspacing="0">
+            <tr>
+                <th>Título</th>
+                <th>Editora</th>
+                <th>Publicado</th>
+                <th>Ações</th>
+            </tr>
+            {% for livro in livros %}
+            <tr>
+                <td>{{ livro.titulo }}</td>
+                <td>{{ livro.editora }}</td>
+                <td>{{ livro.publicado }}</td>
+                <td align="center">
+                    <a href="{% url 'atualizar_livro' livro.id %}">✏️ Atualizar</a> |
+                    <a href="{% url 'deletar_livro' livro.id %}">🗑️ Deletar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+            <p align="center">⚠️ Nenhum livro cadastrado ainda.</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        <hr>
+        <p align="center">
+            <a href="{% url 'adicionar_livro' %}">➕ Adicionar Livro</a> |
+            <a href="{% url 'home' %}">🏠 Voltar</a>
+        </p>
+    </footer>
+
 </body>
 </html>

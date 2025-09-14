@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Usuario</title>
+    <title>Adicionar Usuário</title>
 </head>
 <body>
-    <h1>Adicionar Usuario</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Adicionar</button>
-    </form>
+
+    <header>
+        <h1 align="center">➕ Adicionar Usuário</h1>
+        <hr>
+    </header>
+
+    <main>
+        <form method="post" align="center">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">✅ Adicionar</button>
+            <a href="{% url 'listar_usuarios' %}">🏠 Voltar</a>
+        </form>
+    </main>
+
+    <footer>
+        <hr>
+        <p align="center">Gerenciador de Livros</p>
+    </footer>
+
 </body>
 </html>
