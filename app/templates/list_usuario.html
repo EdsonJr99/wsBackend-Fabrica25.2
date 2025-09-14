@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+    <h1>Usuarios Cadastrados</h1>
+    {% for usuario in usuarios %}
+    <ul>
+        <li>
+            {{ usuario.nome_usuario }}
+            {{ usuario.idade }}
+        </li>
+    </ul>
+        <a href="{% url 'atualizar_usuario' usuario.id %}">Atualizar Usuario</a>
+        <a href="{% url 'deletar_usuario' usuario.id %}">Deletar Usuario</a>
+    {% endfor %}
+    <a href="{% url 'adicionar_usuario' %}">Adicionar Usuario</a>
+</body>
+</html>

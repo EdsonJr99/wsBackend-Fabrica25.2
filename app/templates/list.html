@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Livros</title>
+</head>
+<body>
+    <h1>Livros cadastrados</h1>
+    {% for livro in livros %}
+    <ul>
+        <li>
+            {{ livro.titulo }}
+            {{ livro.editora }}
+            {{ livro.publicado }}
+        </li>
+    </ul>
+        <a href="{% url 'atualizar_livro' livro.id %}">Atualizar Livro</a>
+        <a href="{% url 'deletar_livro' livro.id %}">Deletar Livro</a>
+    {% endfor %}
+    <a href="{% url 'adicionar_livro' %}">Adicionar Livro</a>
+</body>
+</html>
